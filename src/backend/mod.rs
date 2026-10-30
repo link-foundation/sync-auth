@@ -10,6 +10,8 @@ use std::path::Path;
 ///
 /// Implement this trait to provide a custom storage backend (e.g. GitLab,
 /// a custom Git server, or even a non-Git store).
+// async-trait adds #[must_use] to methods returning already-must-use futures.
+#[allow(clippy::double_must_use)]
 #[async_trait::async_trait]
 pub trait GitBackend: Send + Sync {
     /// Clone the repository (shallow if supported) to `local_path`.
