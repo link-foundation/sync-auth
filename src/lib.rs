@@ -73,6 +73,8 @@ pub enum ValidationResult {
 /// Implement this trait to add support for syncing credentials of any dev tool.
 /// Each provider declares its name, the credential files it manages, and
 /// optionally a validation method to check credential freshness.
+// async-trait adds #[must_use] to methods returning already-must-use futures.
+#[allow(clippy::double_must_use)]
 #[async_trait::async_trait]
 pub trait AuthProvider: Send + Sync {
     /// Unique name for this provider (e.g. "gh", "claude").

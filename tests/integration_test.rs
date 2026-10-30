@@ -8,7 +8,7 @@ mod version_tests {
 
     #[test]
     fn test_version_is_not_empty() {
-        assert!(!VERSION.is_empty());
+        assert_ne!(VERSION, "");
     }
 
     #[test]
@@ -115,7 +115,7 @@ mod config_tests {
     #[test]
     fn test_default_config() {
         let config = SyncConfig::default();
-        assert!(config.repo_url.is_empty());
+        assert_eq!(config.repo_url, "");
         assert!(config.shallow_clone);
         assert_eq!(config.branch, "main");
         assert_eq!(config.watch_interval_secs, 60);
